@@ -26,10 +26,9 @@ main(int argc, char *argv[])
     }
 
     
-
-    while (1)
-        ; // Infinite loop to keep the process running
+    while (1);
+        // for (int i = 0; i < 1000000000; i++)
+            // kill(2); // Wake up the shell process
     
-
-    exit(); // eq to return zero
+    exit();
 }
