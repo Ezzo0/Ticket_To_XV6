@@ -14,7 +14,7 @@ main(int argc, char *argv[])
     }
     
 
-    printf(1, "test_Ticket\n");
+    printf(1, "----------------- Ticket Process -----------------\n");
 
     int number = atoi(argv[1]);
     int ret = settickets(number);
@@ -25,19 +25,11 @@ main(int argc, char *argv[])
         exit();
     }
 
-    // int i = 0;
+    
 
-    // for (i = 0; i < 10; i++)
-    // {
-    //     printf(1, "running process: %d\n", getpid);
-    // }
-    
-    
     while (1)
-    {
-        /* code */
-        /* just for delay */
-    }
+        ; // Infinite loop to keep the process running
+    
 
     exit(); // eq to return zero
 }

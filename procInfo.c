@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     int count = 0;
     struct pstat ps;
     getpinfo(&ps);
-    printf(1, "\n------------ Processes Informantion ----------\n");
+    printf(1, "\n----------------- Processes Informantion -----------------\n");
     printf(1, "\nProcessID\tRunnable(0/1)\tTickets\t\tTicks\n");
     for (int i = 0; i < NPROC; i++)
     {

@@ -588,19 +588,9 @@ int settickets(int num)
 {
   if (num < 1)  return -1;
 
-  struct proc *pr = myproc();
-  int pid = pr->pid;
+
   acquire(&ptable.lock); // Find and assign the tickets to the process
-  struct proc *p;
-  for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
-  {
-    if (p->pid == pid)
-    {
-      p->tickets = num; // assigining alloted ticket for a process
-      release(&ptable.lock);
-      return 0;
-    }
-  }
+  myproc()->tickets = num; 
   release(&ptable.lock);
   return 0;
 }
