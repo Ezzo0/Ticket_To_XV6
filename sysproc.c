@@ -8,6 +8,9 @@
 #include "proc.h"
 #include "pstat.h"
 
+extern int mprotect(void *addr, int len);
+extern int munprotect(void *addr, int len);
+
 int
 sys_fork(void)
 {
@@ -107,4 +110,25 @@ sys_getpinfo(void)
   if (argptr(0, (char **) &st, sizeof(struct pstat)) < 0) return -1;
   
   return getpinfo(st);
+}
+
+int
+sys_mprotect(void)
+{
+  int *addr;
+  int len; 
+  if(argptr(0, (void*)&addr, sizeof(addr)) < 0 || argint(1, &len) < 0) return -1; 
+
+  return mprotect((void *)addr, len);
+}
+
+int
+sys_munprotect(void)
+{
+  int *addr;
+  int len; 
+  if(argptr(0, (void*)&addr, sizeof(addr)) < 0 || argint(1, &len) < 0) return -1; 
+
+  return munprotect((void *)addr, len);
+
 }

@@ -36,6 +36,7 @@ idtinit(void)
 void
 trap(struct trapframe *tf)
 {
+  // cprintf("trap %d from %x:%x\n", tf->trapno, tf->cs, tf->eip);
   if(tf->trapno == T_SYSCALL){
     if(myproc()->killed)
       exit();
@@ -86,6 +87,17 @@ trap(struct trapframe *tf)
               tf->trapno, cpuid(), tf->eip, rcr2());
       panic("trap");
     }
+
+    if (tf->trapno == 14)
+    {
+      cprintf("Page Fault\n");
+    }
+
+    if (tf->trapno == 6)
+    {
+      cprintf("Seg Fault\n");
+    }
+    
     // In user space, assume process misbehaved.
     cprintf("pid %d %s: trap %d err %d on cpu %d "
             "eip 0x%x addr 0x%x--kill proc\n",
